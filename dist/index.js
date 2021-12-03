@@ -1590,17 +1590,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(186));
-const wait_1 = __nccwpck_require__(259);
 // most @actions toolkit packages have async methods
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const ms = core.getInput('milliseconds');
-            core.info(`Waiting ${ms} milliseconds ...`);
-            core.debug((new Date()).toTimeString()); // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-            yield (0, wait_1.wait)(parseInt(ms));
-            core.info((new Date()).toTimeString());
-            core.setOutput('time', new Date().toTimeString());
+            const authToken = core.getInput('authToken');
+            core.info(`Got auth token with length ${authToken.length}`);
         }
         catch (error) {
             if (error instanceof Error) {
@@ -1611,26 +1606,6 @@ function run() {
     });
 }
 run();
-
-
-/***/ }),
-
-/***/ 259:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.wait = void 0;
-const wait = function (milliseconds) {
-    return new Promise((resolve) => {
-        if (typeof milliseconds !== 'number') {
-            throw new Error('milliseconds not a number');
-        }
-        setTimeout(() => resolve("done!"), milliseconds);
-    });
-};
-exports.wait = wait;
 
 
 /***/ }),
