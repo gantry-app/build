@@ -1,9 +1,9 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: "Build Image with Gantry"
+description: "Submits a build to Gantry"
 inputs:
-  authToken:  # id of input
-    description: 'Generated Gantry auth token to run build'
+  authToken: # id of input
+    description: "Generated Gantry auth token to run build"
     required: true
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node16"
+  main: "dist/index.js"
